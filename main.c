@@ -11,6 +11,7 @@ int main(void) {
   printf ("Enter the number of elements: ");
   scanf ("%d", &numElements);
   int inputArray[numElements];
+  printf ("Enter the elements of the array: ");
   for (int i = 0; i < numElements; i++)
     scanf ("%d", &inputArray[i]);
 

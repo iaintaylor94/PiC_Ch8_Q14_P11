@@ -1,36 +1,42 @@
-// Program to calculate the sum of the elements of an array
+// Program to calculate the sum of the elements of an array using global variables
 
 #include <stdio.h>
+#include <stdlib.h>
+
+// Declare global variables
+int gNumElements;
+int gSumArray;
+int *gArrayPtr;
 
 // Declare Functions
-int arraySum (int, int[]);
+void arraySum ();
 
 int main(void) {
   // Get input from terminal
-  int numElements;
   printf ("Enter the number of elements: ");
-  scanf ("%d", &numElements);
-  int inputArray[numElements];
+  scanf ("%d", &gNumElements);
+
+  // Create array
+  gArrayPtr = malloc (gNumElements * sizeof (int));
+  
   printf ("Enter the elements of the array: ");
-  for (int i = 0; i < numElements; i++)
-    scanf ("%d", &inputArray[i]);
+  for (int i = 0; i < gNumElements; i++)
+    scanf ("%d", &gArrayPtr[i]);
 
   // Calculate sum of array
-  int sumArray = arraySum (numElements, &inputArray[0]);
+  arraySum ();
 
   // Print result
-  printf ("The sum of the array is: %d\n", sumArray);
+  printf ("The sum of the array is: %d\n", gSumArray);
   
   return 0;
 }
 
 // Define Functions
-int arraySum (int numElements, int array[]) {
+void arraySum () {
   
-  int sum = 0;
-  for (int i = 0; i < numElements; i++) {
-    sum += array[i];
+  gSumArray = 0;
+  for (int i = 0; i < gNumElements; i++) {
+    gSumArray += *gArrayPtr + i;
   }
-
-  return (sum);
 }
